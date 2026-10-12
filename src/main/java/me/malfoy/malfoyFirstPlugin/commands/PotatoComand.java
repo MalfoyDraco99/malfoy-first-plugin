@@ -1,3 +1,4 @@
+// Basic Command "challenge"
 package me.malfoy.malfoyFirstPlugin.commands;
 
 import io.papermc.paper.command.brigadier.BasicCommand;

@@ -1,3 +1,4 @@
+// Command args double
 package me.malfoy.malfoyFirstPlugin.commands;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
@@ -43,7 +44,9 @@ public class HealCommand {
         }
 
         player.setHealth(amount);
-        player.sendMessage(Component.text("Your health is now" + amount +"!", NamedTextColor.GREEN));
+        player.sendMessage(Component.text("Your health is now ", NamedTextColor.GREEN)
+                .append(Component.text("20.0", NamedTextColor.AQUA))
+                .append(Component.text("!", NamedTextColor.GREEN)));
         return 1;
     }
 }
