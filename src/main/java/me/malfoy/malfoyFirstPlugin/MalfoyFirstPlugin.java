@@ -1,7 +1,10 @@
 package me.malfoy.malfoyFirstPlugin;
 
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import me.malfoy.malfoyFirstPlugin.commands.DayCommand;
 import me.malfoy.malfoyFirstPlugin.commands.HealCommand;
 import me.malfoy.malfoyFirstPlugin.commands.PotatoComand;
+import me.malfoy.malfoyFirstPlugin.commands.SpawnCommand;
 import me.malfoy.malfoyFirstPlugin.listeners.ConnectionListener;
 import me.malfoy.malfoyFirstPlugin.listeners.ChorusTeleportListener;
 import me.malfoy.malfoyFirstPlugin.listeners.FallDamageListener;
@@ -23,9 +26,15 @@ public final class MalfoyFirstPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PotatoPickupListener(), this);
 
 
-        // Register Commands
+        // Register Basic Commands
         registerCommand("heal", List.of("healalias"), new HealCommand());
         registerCommand("potato",new PotatoComand());
+
+        // Register Tree Command
+        getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS,event -> {
+            event.registrar().register(SpawnCommand.create());
+            event.registrar().register(DayCommand.create());
+        });
     }
 
     @Override
