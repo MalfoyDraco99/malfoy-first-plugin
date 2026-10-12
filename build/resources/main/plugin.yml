@@ -1,8 +1,0 @@
-name: malfoy-first-plugin
-version: '1.0-SNAPSHOT'
-
-main: me.malfoy.malfoyFirstPlugin.MalfoyFirstPlugin
-api-version: '26.2'
-load: POSTWORLD
-
-authors: [ malfoy ]
