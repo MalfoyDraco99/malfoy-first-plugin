@@ -31,7 +31,7 @@ public class DayCommand {
             return 0;
         }
         player.getWorld().setTime(Time);
-        player.sendMessage(Component.text("Set time to "+ timeName + "!", NamedTextColor.GREEN));
+        player.sendMessage(Component.text("Time set to" + timeName + "("+ Time + " ticks)", NamedTextColor.GREEN));
         return 1;
     }
 

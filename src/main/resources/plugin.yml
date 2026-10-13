@@ -8,6 +8,9 @@ permissions:
   malfoysplugin.heal:
     description: Allows a player to heal themself or others.
     default: op
+  malfoysplugin.announce:
+    description: Allows a player to announce things.
+    default: op
   malfoysplugin.spawn:
     description: Allows a player to spawn zombies and creepers.
     default: op
@@ -20,5 +23,6 @@ permissions:
   malfoysplugin.spawn.creeper:
     description: Allows a player to spawn a creeper
     default: op
+
 
 authors: [ malfoy ]
