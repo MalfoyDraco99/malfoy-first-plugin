@@ -8,6 +8,7 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jspecify.annotations.Nullable;
 
 public class PotatoComand implements BasicCommand {
     @Override
@@ -19,5 +20,10 @@ public class PotatoComand implements BasicCommand {
         ItemStack potato = new ItemStack(Material.POTATO,1);
         player.getWorld().dropItem(player.getTargetBlock(null,40).getLocation().add(0,1,0), potato);
         player.sendMessage(Component.text("Oh look, a potato! what could go wrong?", NamedTextColor.YELLOW));
+    }
+
+    @Override
+    public @Nullable String permission() {
+        return "malfoysplugin.heal";
     }
 }

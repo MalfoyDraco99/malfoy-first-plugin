@@ -4,5 +4,21 @@ version: '${version}'
 main: me.malfoy.malfoyFirstPlugin.MalfoyFirstPlugin
 api-version: '26.2'
 load: POSTWORLD
+permissions:
+  malfoysplugin.heal:
+    description: Allows a player to heal themself or others.
+    default: op
+  malfoysplugin.spawn:
+    description: Allows a player to spawn zombies and creepers.
+    default: op
+    children:
+      malfoysplugin.spawn.zombie: true
+      malfoysplugin.spawn.creeper: true
+  malfoysplugin.spawn.zombie:
+    description: Allows a player to spawn zombie
+    default: op
+  malfoysplugin.spawn.creeper:
+    description: Allows a player to spawn a creeper
+    default: op
 
 authors: [ malfoy ]

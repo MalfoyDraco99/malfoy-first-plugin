@@ -14,10 +14,16 @@ public class SpawnCommand {
     public static LiteralCommandNode<CommandSourceStack> create(){
         return Commands.literal("spawn")
                 .then(Commands.literal("zombie") // /spawn zombie
+                        .requires(commandSourceStack -> {
+                            return commandSourceStack.getSender().hasPermission("malfoysplugin.spawn.zombie");
+                        })
                         .executes(context -> {
                             return spawnMob(context.getSource(), EntityType.ZOMBIE);
                         }))
                 .then(Commands.literal("creeper")
+                        .requires(commandSourceStack -> {
+                            return commandSourceStack.getSender().hasPermission("malfoysplugin.spawn.creeper");
+                        })
                         .executes(context -> {
                             return spawnMob(context.getSource(), EntityType.CREEPER);
                         }))
