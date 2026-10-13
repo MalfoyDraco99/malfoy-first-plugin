@@ -34,6 +34,7 @@ public final class MalfoyFirstPlugin extends JavaPlugin {
             event.registrar().register(GlowCommand.create());
             event.registrar().register(AnnounceCommand.create());
             event.registrar().register(MovementCommand.create());
+            event.registrar().register(AdminCommand.create());
         });
     }
 
