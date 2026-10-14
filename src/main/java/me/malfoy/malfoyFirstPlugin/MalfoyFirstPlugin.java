@@ -17,7 +17,7 @@ public final class MalfoyFirstPlugin extends JavaPlugin {
         getLogger().info("malfoy-first-plugin enabled");
 
         // Register Events
-        getServer().getPluginManager().registerEvents(new ConnectionListener(), this);
+        getServer().getPluginManager().registerEvents(new ConnectionListener(this), this);
         getServer().getPluginManager().registerEvents(new ChorusTeleportListener(), this);
         getServer().getPluginManager().registerEvents(new FallDamageListener(), this);
         getServer().getPluginManager().registerEvents(new PotatoPickupListener(), this);
@@ -34,11 +34,17 @@ public final class MalfoyFirstPlugin extends JavaPlugin {
             event.registrar().register(AnnounceCommand.create());
             event.registrar().register(MovementCommand.create());
             event.registrar().register(AdminCommand.create());
+            event.registrar().register(SnackCommand.create(this));
         });
+        // Config
+        saveDefaultConfig(); // adds config if dosnt exist
+        getConfig().options().copyDefaults(true); // puts new values into config
+        saveConfig(); // well i think i can remember what this does... its in the name.
     }
 
     @Override
     public void onDisable() {
         getLogger().info("malfoy-first-plugin disabled");
+        saveConfig();
     }
 }

@@ -1,0 +1,9 @@
+snack-amount: 5
+snack:
+  amount: 5
+  messages:
+    inventory-full: "<green> Your inventory was full, <red><remainder><green> cookies where dropped on the ground."
+    success: "<bold><gold>Enjoy Your Cookies!</gold></bold><dark_gray>  •  </dark_gray>You have been given <bold><amount></bold> cookies <aqua><click:run_command:'/snack'><hover:show_text:'Click To get more!'>[CLICK TO GET MORE COOKIES!]</hover></click></aqua>"
+join-effects:
+  enabled: true
+  message: "<rainbow>Welcome to the server </rainbow><gold><player></gold><rainbow>!</rainbow>"
