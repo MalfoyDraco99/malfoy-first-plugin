@@ -5,8 +5,11 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
+import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
+import net.kyori.adventure.title.Title;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -40,27 +43,34 @@ public class AnnounceCommand {
     }
     // if ur reading this ur a cool dude
     private static int sendChatAnnouncement(String message){
-        Bukkit.broadcast(Component.text("Announcement: " + message, NamedTextColor.GOLD));
+        var announcement = Component.text("Announcement: ", NamedTextColor.GOLD)
+                .append(Component.text(message, NamedTextColor.BLUE));
+        Bukkit.broadcast(announcement);
         return 1;
     }
 
     private static void sendActionBarAnnouncement(CommandSourceStack source, String message){
+        var actionbar = Component.text("Announcement: ", NamedTextColor.GOLD)
+                .append(Component.text(message, NamedTextColor.BLUE));
+        Audience players = Audience.audience(Bukkit.getOnlinePlayers());
 
+        players.sendActionBar(actionbar);
     }
 
     private static void sendTitleAnnouncement(CommandSourceStack source, String message){
+        var title = Component.text(message,NamedTextColor.GOLD).decorate(TextDecoration.BOLD);
+        var subtitle = Component.text("Server Announcement", NamedTextColor.GRAY);
+        Audience players = Audience.audience(Bukkit.getOnlinePlayers());
+        players.showTitle(Title.title(title,subtitle));
 
     }
 
     private static int sendUsage(CommandSourceStack source){
-        if (!(source.getExecutor() instanceof Player player)){
-            source.getSender().sendMessage(Component.text("Only a player can run this command", NamedTextColor.RED));
-            return 0;
-        }
-        player.sendMessage(Component.text("Usage:\n" +
+        var usage = Component.text("Usage:\n" +
                 "/announce chat <message>\n" +
                 "/announce actionbar <message>\n" +
-                "/announce title <message>", NamedTextColor.RED));
+                "/announce title <message>", NamedTextColor.RED);
+        source.getSender().sendMessage(usage);
         return 1;
     }
 

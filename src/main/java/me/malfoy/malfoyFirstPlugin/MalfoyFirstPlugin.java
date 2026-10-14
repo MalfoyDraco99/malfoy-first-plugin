@@ -25,7 +25,6 @@ public final class MalfoyFirstPlugin extends JavaPlugin {
 
         // Register Basic Commands
         registerCommand("potato",new PotatoComand());
-
         // Register Tree Command
         getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS,event -> {
             event.registrar().register(SpawnCommand.create());
